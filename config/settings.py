@@ -37,11 +37,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'rest_framework',
+    'rest_framework.authtoken',
     'users',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
+    'corsheaders',
 ]
 
+SITE_ID = 1
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -50,6 +61,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = 'config.urls'
 
@@ -102,6 +117,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ]
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/

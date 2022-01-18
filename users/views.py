@@ -1,6 +1,7 @@
 from rest_framework import generics, mixins, viewsets
 from users.serializers import UserSerializer
 from users.models import User
+from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 class UserViewSet(
