@@ -71,6 +71,13 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:8000',
     'http://localhost:8080',
 ]
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:3000',
+    'http://localhost:8080',
+    ]
+
+
 ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
